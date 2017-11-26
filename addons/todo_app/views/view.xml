@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+
+  <!--
+
+  <act_window id="act_window_sth"
+    name="To-Do Task"
+    res_model="todo_app.task"
+    view_mode="tree,form"
+  />
+
+  -->
+
+    <record id="todo_task_act_window" model="ir.actions.act_window">
+      <field name="name">To-Do Task</field>
+      <field name="res_model">todo_app.task</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record id="view_tree_todo_task" model="ir.ui.view">
+      <field name="name">To-Do Task</field>
+      <field name="model">todo_app.task</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="title"></field>
+          <field name="date_deadline"></field>
+          <field name="is_done"></field>
+        </tree>
+      </field>
+    </record>
+    <record id="view_form_todo_task" model="ir.ui.view">
+      <field name="name">To-Do Task Form</field>
+      <field name="model">todo_app.task</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group name="first" col="5">
+              <group colspan="3">
+                <field name="title"></field>
+              </group>
+              <group colspan="2">
+                <field name="is_done"></field>
+              </group>
+            </group>
+
+            <group name="second">
+              <group name="second_first">
+                <field name="date_deadline"></field>
+              </group>
+            </group>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="todo_task_menu" model="ir.ui.menu">
+      <field name="name">To-Do</field>
+      <field name="action" ref="todo_task_act_window"></field>
+    </record>
+  </data>
+</odoo>

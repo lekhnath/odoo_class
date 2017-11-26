@@ -1,0 +1,9 @@
+{
+  "python.pythonPath": "${workspaceRoot}/venv/bin/python",
+  "python.autoComplete.extraPaths": [
+    "${workspaceRoot}/odoo"
+  ],
+  "[python]": {
+    "editor.tabSize": 4
+  }
+}
