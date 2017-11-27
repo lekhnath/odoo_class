@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
+<record id="view_search_todo_task_enhance" model="ir.ui.view">
+  <field name="name">To-Do Task Search Enahance</field>
+  <field name="model">todo_app.task</field>
+  <field name="inherit_id" ref="todo_app.view_search_todo_task" />
+  <field name="arch" type="xml">
+    <filter name="filter_task_not_done" position="after">
+      <filter name="filter_task_priority_low" string="Low Prioriy"
+        domain="[('priority', '=', 'low')]"
+      ></filter>
+      <filter name="filter_task_priority_medium" string="Medium Prioriy"
+        domain="[('priority', '=', 'medium')]"
+      ></filter>
+      <filter name="filter_task_priority_high" string="High Prioriy"
+        domain="[('priority', '=', 'high')]"
+      ></filter>
+    </filter>
+  </field>
+</record>
+
 <record id="view_tree_todo_task_enhance" model="ir.ui.view">
   <field name="name">To-Do Task Enahance</field>
   <field name="model">todo_app.task</field>

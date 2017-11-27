@@ -17,6 +17,7 @@
       <field name="res_model">todo_app.task</field>
       <field name="view_mode">tree,form</field>
     </record>
+
     <record id="view_tree_todo_task" model="ir.ui.view">
       <field name="name">To-Do Task</field>
       <field name="model">todo_app.task</field>
@@ -28,6 +29,25 @@
         </tree>
       </field>
     </record>
+
+    <record id="view_search_todo_task" model="ir.ui.view">
+      <field name="name">To-Do Task Search</field>
+      <field name="model">todo_app.task</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="title"></field>
+          <filter name="filter_task_done"
+            string="Done"
+            domain="[('is_done', '=', True)]"
+          ></filter>
+          <filter name="filter_task_not_done"
+            string="Not Done"
+            domain="[('is_done', '=', False)]"
+          ></filter>
+        </search>
+      </field>
+    </record>
+
     <record id="view_form_todo_task" model="ir.ui.view">
       <field name="name">To-Do Task Form</field>
       <field name="model">todo_app.task</field>
