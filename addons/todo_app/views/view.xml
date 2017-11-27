@@ -26,6 +26,7 @@
           <field name="title"></field>
           <field name="date_deadline"></field>
           <field name="is_done"></field>
+          <field name="active"></field>
         </tree>
       </field>
     </record>
@@ -53,6 +54,11 @@
       <field name="model">todo_app.task</field>
       <field name="arch" type="xml">
         <form>
+          <header>
+            <button name="toggle_done" type="object" string="Toggle Done"></button>
+
+            <button name="archive_done" string="Archive Done Task"></button>
+          </header>
           <sheet>
             <group name="first" col="5">
               <group colspan="3">
