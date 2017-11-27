@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
+
+<record id="todo_app.todo_task_act_window" model="ir.actions.act_window">
+  <field name="target">current</field>
+  <field name="domain">[]</field>
+  <field name="limit">80</field>
+  <field name="context">{'default_priority': 'high', 'default_is_done': True, 'search_default_filter_task_priority_high': 1}</field>
+</record>
+
 <record id="view_search_todo_task_enhance" model="ir.ui.view">
   <field name="name">To-Do Task Search Enahance</field>
   <field name="model">todo_app.task</field>
