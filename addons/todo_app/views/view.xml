@@ -79,6 +79,7 @@
         </form>
       </field>
     </record>
+
     <record id="todo_task_menu" model="ir.ui.menu">
       <field name="name">To-Do</field>
       <field name="action" ref="todo_task_act_window"></field>

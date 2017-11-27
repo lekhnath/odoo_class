@@ -2,6 +2,30 @@
 <odoo>
 
 
+<data>
+<act_window id="act_window_tag"
+  name='Task Tag'
+  res_model='enhance_todo_app.tag'
+  view_mode='tree,form'
+></act_window>
+
+
+<menuitem id="todo_app.todo_task_menu" name="To-Do"></menuitem>
+
+<menuitem
+  id="task_menu"
+  parent="todo_app.todo_task_menu"
+  name="Task"
+  action="todo_app.todo_task_act_window"
+></menuitem>
+
+<menuitem
+ id="tag_menu"
+ parent="todo_app.todo_task_menu"
+ name="Tag"
+ action="act_window_tag"
+></menuitem>
+
 <record id="todo_app.todo_task_act_window" model="ir.actions.act_window">
   <field name="target">current</field>
   <field name="domain">[]</field>
@@ -35,6 +59,7 @@
   <field name="arch" type="xml">
     <field name="title" position="after">
       <field name="priority"></field>
+      <field name="assignee_id"></field>
     </field>
   </field>
 </record>
@@ -48,11 +73,16 @@
     <group name="second_first" position="after">
       <group name="second_second">
         <field name="priority"></field>
+        <field name="assignee_id"></field>
+        <field name="tag_ids" widget="many2many_tags"></field>
       </group>
     </group>
 
 
   </field>
 </record>
+
+
+</data>
 
 </odoo>
