@@ -1,4 +1,6 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+from datetime import datetime
 
 class TodoTask(models.Model):
   _name = 'todo_app.task'
@@ -21,6 +23,37 @@ class TodoTask(models.Model):
   date_deadline = fields.Date(
     'Deadline',
   )
+  display_name = fields.Char(
+    computed='_compute_display_name'
+  )
+
+  @api.model
+  def callme(self):
+    countries = self.env['res.country'].search([], ['name'], limit=5)
+    print "Total Users %d" %len(countries)
+
+  @api.multi
+  @api.depends('title', 'is_done')
+  def _compute_display_name(self):
+
+    self.ensure_one()
+    #yes_or_no = '(Yes)' if self.is_done else '(No)'
+
+    if self.is_done:
+      yes_or_no = '(Yes)'
+    else:
+      yes_or_no = '(No)'
+
+    self.display_name = self.title +' '+ yes_or_no
+
+  @api.multi
+  @api.constrains('date_deadline')
+  def validate_date_deadline(self):
+    self.ensure_one()
+    today = datetime.now().date()
+
+    if today > fields.Date.from_string(self.date_deadline):
+      raise ValidationError('Deadline must be future date')
 
   @api.model
   def archive_done(self):

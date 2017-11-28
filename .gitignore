@@ -1,2 +1,3 @@
 odoo
 venv
+*.py[cod]
