@@ -14,6 +14,8 @@
   ],
   'demo': [
     'data/todo_app.task.csv',
+    'security/ir.model.access.csv',
+    'security/todo_task_owner_assignee_rule.xml',
   ],
   'application': True,
   'installable': True,

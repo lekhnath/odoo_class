@@ -19,7 +19,7 @@ class TodoTask(models.Model):
     'Task Done?'
   )
   date_deadline = fields.Date(
-    'Deadline'
+    'Deadline',
   )
 
   @api.model
