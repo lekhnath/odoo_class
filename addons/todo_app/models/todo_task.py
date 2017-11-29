@@ -32,12 +32,9 @@ class TodoTask(models.Model):
     countries = self.env['res.country'].search([], ['name'], limit=5)
     print "Total Users %d" %len(countries)
 
-  @api.multi
   @api.depends('title', 'is_done')
   def _compute_display_name(self):
-
     self.ensure_one()
-    #yes_or_no = '(Yes)' if self.is_done else '(No)'
 
     if self.is_done:
       yes_or_no = '(Yes)'
@@ -52,7 +49,7 @@ class TodoTask(models.Model):
     self.ensure_one()
     today = datetime.now().date()
 
-    if today > fields.Date.from_string(self.date_deadline):
+    if self.date_deadline and today > fields.Date.from_string(self.date_deadline):
       raise ValidationError('Deadline must be future date')
 
   @api.model
