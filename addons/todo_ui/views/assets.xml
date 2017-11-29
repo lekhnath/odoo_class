@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+    <template id="todo_ui_web_static" inherit_id="web.assets_backend" name="To-Do UI static resources">
+      <xpath expr="." position="inside">
+        <link rel="stylesheet" href="/todo_ui/static/src/less/style.less" type="text/less" />
+        <link rel="stylesheet" href="/todo_ui/static/src/less/toggle_switch.less" type="text/less" />
+        <script src="/todo_ui/static/src/js/script.js"></script>
+      </xpath>
+    </template>
+  </data>
+</odoo>
