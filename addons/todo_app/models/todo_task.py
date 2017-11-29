@@ -23,41 +23,22 @@ class TodoTask(models.Model):
   date_deadline = fields.Date(
     'Deadline',
   )
-  # display_name = fields.Char(
-  #   computed='_compute_display_name'
-  # )
+  display_name = fields.Char(
+    compute='_compute_display_name'
+  )
 
   @api.model
   def callme(self):
     countries = self.env['res.country'].search([], ['name'], limit=5)
     print "Total Users %d" %len(countries)
 
-  # @api.one
-  # @api.depends('title', 'is_done')
-  # def _compute_display_name(self):
-  #   #self.ensure_one()
+  @api.depends('title', 'is_done')
+  def _compute_display_name(self):
 
-  #   yes_or_no = None
-  #   self.display_name = 'Custom'
+    for todo_task in self:
+      yes_or_no = '(Yes)' if todo_task.is_done else '(No)'
 
-    # for todo_task in self:
-    #   todo_task.display_name = 'Dispaly'
-
-      # if todo_task.is_done:
-      #   yes_or_no = '(Yes)'
-      # else:
-      #   yes_or_no = '(No)'
-
-      # todo_task.display_name = todo_task.title +' '+ yes_or_no
-    #self.ensure_one()
-    #yes_or_no = '(Yes)' if self.is_done else '(No)'
-
-    # if self.is_done:
-    #   yes_or_no = '(Yes)'
-    # else:
-    #   yes_or_no = '(No)'
-
-    # self.display_name = self.title +' '+ yes_or_no
+      todo_task.display_name = todo_task.title +' '+ yes_or_no
 
   @api.multi
   @api.constrains('date_deadline')
