@@ -75,6 +75,7 @@
         <field name="priority"></field>
         <field name="assignee_id" options="{'no_create': True, 'no_open': True}"></field>
         <field name="tag_ids" widget="many2many_tags"></field>
+        <field name="tag_count"></field>
       </group>
     </group>
 

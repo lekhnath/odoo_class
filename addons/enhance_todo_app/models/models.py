@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import api, fields, models
 
 class TodoTag(models.Model):
     _name='enhance_todo_app.tag'
@@ -27,3 +27,11 @@ class EnhanceTodoTask(models.Model):
         comodel_name='enhance_todo_app.tag',
         string='Tags'
     )
+
+    tag_count = fields.Integer(
+        compute='_compute_tag_count'
+    )
+
+    @api.onchange('tag_ids')
+    def _compute_tag_count(self):
+        self.tag_count = len(self.tag_ids)
