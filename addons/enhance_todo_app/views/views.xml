@@ -73,7 +73,7 @@
     <group name="second_first" position="after">
       <group name="second_second">
         <field name="priority"></field>
-        <field name="assignee_id"></field>
+        <field name="assignee_id" options="{'no_create': True, 'no_open': True}"></field>
         <field name="tag_ids" widget="many2many_tags"></field>
       </group>
     </group>
